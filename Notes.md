@@ -18,4 +18,5 @@ Question Example
 # Source to Destination
 * For OLTP sources , enabling CDC eases the implementation of SCD type 1 & 2.
 * SCD Type 1 & 2 : [https://docs.databricks.com/aws/en/dlt/cdc?language=SQL#scd-type-1-and-scd-type-2-on-databricks]
+* DLT tutorial: [https://docs.databricks.com/aws/en/dlt/tutorial-pipelines]
 
