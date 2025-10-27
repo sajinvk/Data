@@ -1,0 +1,535 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="721px" height="841px" viewBox="-0.5 -0.5 721 841" content="&lt;mxfile&gt;&lt;diagram id=&quot;xDWnzq99fAXm8uAcPiz8&quot; name=&quot;Page-1&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <g>
+            <path d="M 120 30 L 193.63 30" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(0, 0, 0);"/>
+            <path d="M 198.88 30 L 191.88 33.5 L 193.63 30 L 191.88 26.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(0, 0, 0); stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <rect x="0" y="0" width="120" height="60" rx="9" ry="9" fill="#6666ff" stroke="#000000" pointer-events="all" style="fill: rgb(102, 102, 255); stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 30px; margin-left: 1px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                <div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <b>
+                                        LlamaIndex
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="60" y="34" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle">
+                        LlamaIndex
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g>
+            <path d="M 320 30 L 373.63 30" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(0, 0, 0);"/>
+            <path d="M 378.88 30 L 371.88 33.5 L 373.63 30 L 371.88 26.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(0, 0, 0); stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <rect x="200" y="0" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#000000" pointer-events="all" style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 30px; margin-left: 201px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                <div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    Framework for LLM Applications
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="260" y="34" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle">
+                        Framework for LLM Ap...
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g>
+            <rect x="380" y="7.5" width="290" height="45" fill="none" stroke="none" pointer-events="all"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 288px; height: 1px; padding-top: 30px; margin-left: 381px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                <div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    * Connect to structured &amp; unstructure data.
+                                    <div>
+                                        * Build Indexes &amp; retrievers
+                                    </div>
+                                    <div>
+                                        * Enable Querying, Summarization &amp; Reasoning
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="525" y="34" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle">
+                        * Connect to structured &amp; unstructure data....
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g>
+            <rect x="0" y="100" width="240" height="50" rx="7.5" ry="7.5" fill="#ccffff" stroke="#000000" pointer-events="all" style="fill: rgb(204, 255, 255); stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 238px; height: 1px; padding-top: 125px; margin-left: 1px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                <div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <b>
+                                        llama_index.core.
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="120" y="129" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle">
+                        llama_index.core.
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g>
+            <path d="M 0 200 L 0 170 L 720 170 L 720 200" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0);"/>
+            <path d="M 0 200 L 0 600 L 720 600 L 720 200" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" style="stroke: rgb(0, 0, 0);"/>
+            <path d="M 0 200 L 720 200" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" style="stroke: rgb(0, 0, 0);"/>
+            <path d="M 0 320 L 120 320 L 380 320 L 720 320" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" style="stroke: rgb(0, 0, 0);"/>
+            <path d="M 0 470 L 120 470 L 380 470 L 720 470" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" style="stroke: rgb(0, 0, 0);"/>
+            <path d="M 120 200 L 120 320 L 120 470 L 120 600" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" style="stroke: rgb(0, 0, 0);"/>
+            <path d="M 380 200 L 380 320 L 380 470 L 380 600" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g fill="#000000" font-family="&quot;Helvetica&quot;" text-anchor="middle" font-size="16px" style="fill: rgb(0, 0, 0);">
+                <text x="359.5" y="191.5">
+                    Core Architecture &amp; Modules
+                </text>
+            </g>
+        </g>
+        <g/>
+        <g>
+            <rect x="0" y="200" width="120" height="120" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 0 200 M 120 200 M 120 320 M 0 320" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 260px; margin-left: 1px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; max-height: 116px; overflow: hidden; color: #000000; ">
+                                <div style="display: inline-block; font-size: 16px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <font style="font-size: 14px;">
+                                        schema
+                                    </font>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="60" y="265" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="16px" text-anchor="middle">
+                        schema
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g>
+            <rect x="120" y="200" width="260" height="120" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 120 200 M 380 200 M 380 320 M 120 320" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 258px; height: 1px; padding-top: 260px; margin-left: 121px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; max-height: 116px; overflow: hidden; color: #000000; ">
+                                <div style="display: inline-block; font-size: 16px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <div>
+                                        <font style="font-size: 12px;">
+                                            <b>
+                                                Document
+                                            </b>
+                                            – a full data unit with text and metadata.
+                                        </font>
+                                    </div>
+                                    <div>
+                                        <font style="font-size: 12px;">
+                                            <b>
+                                                Node / TextNode
+                                            </b>
+                                            – atomic, chunked pieces of a document.
+                                        </font>
+                                    </div>
+                                    <div>
+                                        <font style="font-size: 12px;">
+                                            <b>
+                                                MetadataMode
+                                            </b>
+                                            – controls how metadata is stored and retrieved.
+                                        </font>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="250" y="265" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="16px" text-anchor="middle">
+                        Document – a full data unit with...
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g>
+            <rect x="380" y="200" width="340" height="120" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 380 200 M 720 200 M 720 320 M 380 320" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 338px; height: 1px; padding-top: 260px; margin-left: 381px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; max-height: 116px; overflow: hidden; color: #000000; ">
+                                <div style="display: inline-block; font-size: 16px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <div>
+                                        <i>
+                                            <font style="font-size: 12px;">
+                                                from llama_index.core.schema  import Document
+                                            </font>
+                                        </i>
+                                    </div>
+                                    <div>
+                                        <i>
+                                            <font style="font-size: 12px;">
+                                                doc =
+                                                <b>
+                                                    Document
+                                                </b>
+                                                (text="LlamaIndex enables LLMs to query private data.")
+                                            </font>
+                                        </i>
+                                    </div>
+                                    <div>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="550" y="265" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="16px" text-anchor="middle">
+                        from llama_index.core.schema  import Docum...
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g/>
+        <g>
+            <rect x="0" y="320" width="120" height="150" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 0 320 M 120 320 M 120 470 M 0 470" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 395px; margin-left: 1px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; max-height: 146px; overflow: hidden; color: #000000; ">
+                                <div style="display: inline-block; font-size: 16px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <font style="font-size: 14px;">
+                                        node_parser
+                                    </font>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="60" y="400" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="16px" text-anchor="middle">
+                        node_parser
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g>
+            <rect x="120" y="320" width="260" height="150" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 120 320 M 380 320 M 380 470 M 120 470" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 258px; height: 1px; padding-top: 395px; margin-left: 121px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; max-height: 146px; overflow: hidden; color: #000000; ">
+                                <div style="display: inline-block; font-size: 16px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <font style="font-size: 12px;">
+                                        Responsible for
+                                        <strong data-start="887" data-end="928">
+                                            splitting text into manageable chunks
+                                        </strong>
+                                        (
+                                        <b>
+                                            nodes
+                                        </b>
+                                        ) for embedding and retrieval.
+                                        <br data-start="965" data-end="968"/>
+                                        <br/>
+                                        Includes common strategies like:
+                                    </font>
+                                    <div>
+                                        <font style="font-size: 12px;">
+                                            * SentenceSplitter
+                                        </font>
+                                        <div>
+                                            <font style="font-size: 12px;">
+                                                *TokenTextSplitter
+                                            </font>
+                                        </div>
+                                        <div>
+                                            <font style="font-size: 12px;">
+                                                * SemanticSplitter
+                                            </font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="250" y="400" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="16px" text-anchor="middle">
+                        Responsible for splitting text i...
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g>
+            <rect x="380" y="320" width="340" height="150" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 380 320 M 720 320 M 720 470 M 380 470" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 338px; height: 1px; padding-top: 395px; margin-left: 381px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: center; max-height: 146px; overflow: hidden; color: #000000; ">
+                                <div style="display: inline-block; font-size: 16px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <div>
+                                        <font style="font-size: 10px;">
+                                            <i>
+                                                from llama_index.core.node_parser import SentenceSplitter
+                                            </i>
+                                        </font>
+                                    </div>
+                                    <div>
+                                        <font style="font-size: 10px;">
+                                            <i>
+                                                splitter = SentenceSplitter(chunk_size=512)
+                                            </i>
+                                        </font>
+                                    </div>
+                                    <div>
+                                        <font style="font-size: 10px;">
+                                            <i>
+                                                nodes = splitter.get_nodes_from_documents([doc])
+                                            </i>
+                                        </font>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="550" y="400" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="16px" text-anchor="middle">
+                        from llama_index.core.node_parser import S...
+                    </text>
+                </switch>
+            </g>
+        </g>
+        <g/>
+        <g>
+            <rect x="0" y="470" width="120" height="130" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 0 470 M 120 470 M 120 600 M 0 600" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <rect x="120" y="470" width="260" height="130" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 120 470 M 380 470 M 380 600 M 120 600" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <rect x="380" y="470" width="340" height="130" fill="none" stroke="none" pointer-events="all"/>
+            <path d="M 380 470 M 720 470 M 720 600 M 380 600" fill="none" stroke="#000000" stroke-linecap="square" stroke-miterlimit="10" pointer-events="all" style="stroke: rgb(0, 0, 0);"/>
+        </g>
+        <g>
+            <rect x="0" y="620" width="560" height="220" fill="none" stroke="none" pointer-events="all"/>
+        </g>
+        <g>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 558px; height: 1px; padding-top: 627px; margin-left: 2px;">
+                            <div style="box-sizing: border-box; font-size: 0; text-align: left; color: #000000; ">
+                                <div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                    <table class="w-fit min-w-(--thread-content-width)" data-end="4782" data-start="4142">
+                                        <thead data-end="4176" data-start="4142">
+                                            <tr data-end="4176" data-start="4142">
+                                                <th data-col-size="sm" data-end="4153" data-start="4142">
+                                                    Category
+                                                </th>
+                                                <th data-col-size="sm" data-end="4165" data-start="4153">
+                                                    Submodule
+                                                </th>
+                                                <th data-col-size="md" data-end="4176" data-start="4165">
+                                                    Purpose
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody data-end="4782" data-start="4215">
+                                            <tr data-end="4269" data-start="4215">
+                                                <td data-col-size="sm" data-end="4228" data-start="4215">
+                                                    Data Types
+                                                </td>
+                                                <td data-col-size="sm" data-end="4239" data-start="4228">
+                                                    <code data-end="4238" data-start="4230">
+                                                        schema
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4269" data-start="4239">
+                                                    Documents, Nodes, Metadata
+                                                </td>
+                                            </tr>
+                                            <tr data-end="4333" data-start="4270">
+                                                <td data-col-size="sm" data-end="4280" data-start="4270">
+                                                    Parsing
+                                                </td>
+                                                <td data-col-size="sm" data-end="4296" data-start="4280">
+                                                    <code data-end="4295" data-start="4282">
+                                                        node_parser
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4333" data-start="4296">
+                                                    Sentence and token-based chunking
+                                                </td>
+                                            </tr>
+                                            <tr data-end="4387" data-start="4334">
+                                                <td data-col-size="sm" data-end="4345" data-start="4334">
+                                                    Indexing
+                                                </td>
+                                                <td data-col-size="sm" data-end="4357" data-start="4345">
+                                                    <code data-end="4356" data-start="4347">
+                                                        indices
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4387" data-start="4357">
+                                                    Vector, Tree, List indexes
+                                                </td>
+                                            </tr>
+                                            <tr data-end="4457" data-start="4388">
+                                                <td data-col-size="sm" data-end="4399" data-start="4388">
+                                                    Querying
+                                                </td>
+                                                <td data-col-size="sm" data-end="4430" data-start="4399">
+                                                    <code data-end="4415" data-start="4401">
+                                                        query_engine
+                                                    </code>
+                                                    ,
+                                                    <code data-end="4429" data-start="4417">
+                                                        retrievers
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4457" data-start="4430">
+                                                    Retrieve and query data
+                                                </td>
+                                            </tr>
+                                            <tr data-end="4539" data-start="4458">
+                                                <td data-col-size="sm" data-end="4474" data-start="4458">
+                                                    Configuration
+                                                </td>
+                                                <td data-col-size="sm" data-end="4494" data-start="4474">
+                                                    <code data-end="4493" data-start="4476">
+                                                        service_context
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4539" data-start="4494">
+                                                    Holds LLM, embedding, and parsing configs
+                                                </td>
+                                            </tr>
+                                            <tr data-end="4594" data-start="4540">
+                                                <td data-col-size="sm" data-end="4550" data-start="4540">
+                                                    Storage
+                                                </td>
+                                                <td data-col-size="sm" data-end="4562" data-start="4550">
+                                                    <code data-end="4561" data-start="4552">
+                                                        storage
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4594" data-start="4562">
+                                                    Abstractions for persistence
+                                                </td>
+                                            </tr>
+                                            <tr data-end="4670" data-start="4595">
+                                                <td data-col-size="sm" data-end="4615" data-start="4595">
+                                                    Agents &amp; Workflow
+                                                </td>
+                                                <td data-col-size="sm" data-end="4637" data-start="4615">
+                                                    <code data-end="4624" data-start="4617">
+                                                        agent
+                                                    </code>
+                                                    ,
+                                                    <code data-end="4636" data-start="4626">
+                                                        workflow
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4670" data-start="4637">
+                                                    Orchestrate actions and logic
+                                                </td>
+                                            </tr>
+                                            <tr data-end="4728" data-start="4671">
+                                                <td data-col-size="sm" data-end="4681" data-start="4671">
+                                                    Prompts
+                                                </td>
+                                                <td data-col-size="sm" data-end="4693" data-start="4681">
+                                                    <code data-end="4692" data-start="4683">
+                                                        prompts
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4728" data-start="4693">
+                                                    Templates and parameter helpers
+                                                </td>
+                                            </tr>
+                                            <tr data-end="4782" data-start="4729">
+                                                <td data-col-size="sm" data-end="4741" data-start="4729">
+                                                    Utilities
+                                                </td>
+                                                <td data-col-size="sm" data-end="4751" data-start="4741">
+                                                    <code data-end="4750" data-start="4743">
+                                                        utils
+                                                    </code>
+                                                </td>
+                                                <td data-col-size="md" data-end="4782" data-start="4751">
+                                                    Logging, tokens, misc tools
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="2" y="639" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px">
+                        CategorySubmodulePurposeData TypesschemaDocuments, Nodes, MetadataParsingnode_parserSentence...
+                    </text>
+                </switch>
+            </g>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
