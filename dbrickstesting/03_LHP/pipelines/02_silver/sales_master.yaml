@@ -1,0 +1,59 @@
+pipeline: lhp_pipeline_sample
+flowgroup: slv_sales_master
+
+actions:
+  - name: load_sales
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{bronze_schema}.lhp_sales"
+    target: v_sales
+    description: "Load sales from bronze layer"
+  
+  - name: load_customers
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{bronze_schema}.lhp_customers"
+    target: v_sales_customers
+    description: "Load customers from bronze layer"
+  
+  - name: load_products
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{bronze_schema}.lhp_products"
+    target: v_sales_products
+    description: "Load products from bronze layer"
+  
+  - name: transform_sales_master
+    type: transform
+    transform_type: sql
+    source: [v_sales, v_sales_customers, v_sales_products]
+    target: v_sales_master
+    sql: |
+      SELECT
+        s.*,
+        p.product_name,
+        p.brand,
+        p.category,
+        p.subcategory,
+        p.price AS product_price,
+        concat(c.first_name, " ", c.last_name) as customer_name,
+        c.email as customer_email,
+        c.customer_segment
+      FROM v_sales s
+      LEFT JOIN v_sales_products p
+        ON s.product_id = p.product_id
+      LEFT JOIN v_sales_customers c
+        ON s.customer_id = c.customer_id
+    description: "Transform sales with product and customer details"
+  
+  - name: write_sales_master
+    type: write
+    source: v_sales_master
+    write_target:
+      type: materialized_view
+      database: "{catalog}.{silver_schema}"
+      table: lhp_slv_sales_master
+    description: "Materialized view for sales master table"

@@ -1,0 +1,49 @@
+pipeline: lhp_pipeline_sample
+flowgroup: gld_product_performance
+
+actions:
+  - name: load_sales_master
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{silver_schema}.lhp_slv_sales_master"
+    target: v_gld_product_sales_master
+    description: "Load sales master from silver layer"
+  
+  - name: load_reviews_master
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{silver_schema}.lhp_slv_reviews_master"
+    target: v_gld_product_reviews_master
+    description: "Load reviews master from silver layer"
+  
+  - name: transform_product_performance
+    type: transform
+    transform_type: sql
+    source: [v_gld_product_sales_master, v_gld_product_reviews_master]
+    target: v_product_performance
+    sql: |
+      SELECT
+        s.product_name,
+        s.category,
+        COUNT(DISTINCT s.sale_id) AS total_sales,
+        SUM(s.quantity) AS total_quantity_sold,
+        ROUND(SUM(s.total_amount), 2) AS total_revenue,
+        ROUND(AVG(s.total_amount), 2) AS avg_sale_amount,
+        COUNT(DISTINCT r.review_id) AS total_reviews,
+        ROUND(AVG(r.rating), 2) AS avg_rating
+      FROM v_gld_product_sales_master s
+      LEFT JOIN v_gld_product_reviews_master r
+        ON s.product_name = r.product_name
+      GROUP BY s.product_name, s.category
+    description: "Aggregate product performance metrics"
+  
+  - name: write_product_performance
+    type: write
+    source: v_product_performance
+    write_target:
+      type: materialized_view
+      database: "{catalog}.{gold_schema}"
+      table: lhp_gld_product_performance
+    description: "Product performance metrics combining sales revenue, quantity, and customer ratings"

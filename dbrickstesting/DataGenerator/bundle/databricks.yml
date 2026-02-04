@@ -1,0 +1,71 @@
+# Databricks Asset Bundle for AI Data Generator
+# This bundle deploys the AI Data Generator as a Databricks job
+
+bundle:
+  name: ai_data_generator
+
+# Include configuration from external files
+include:
+  - resources/*.yml
+
+# Note: The notebook should be uploaded to the workspace manually
+# See README.md for upload instructions
+
+# Variables that can be overridden
+variables:
+  environment:
+    description: "Environment name"
+    default: "dev"
+  
+  catalog:
+    description: "Target Unity Catalog"
+    default: "ssharma"
+  
+  schema:
+    description: "Target Schema"
+    default: "ausunity"
+  
+  cluster_node_type:
+    description: "Node type for compute cluster (Azure)"
+    default: "Standard_DS3_v2"
+  
+  cluster_spark_version:
+    description: "Databricks Runtime version"
+    default: "14.3.x-scala2.12"
+
+# Workspace configuration
+# Update this with your actual workspace URL before deploying
+workspace:
+  host: "https://adb-984752964297111.11.azuredatabricks.net/"
+  # Uncomment and configure if needed:
+  # profile: "YOUR_PROFILE_NAME"
+
+# Targets for different environments
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      root_path: ~/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      environment: dev
+      catalog: ssharma
+      schema: ausunity
+  
+  staging:
+    mode: production
+    workspace:
+      root_path: /Shared/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      environment: staging
+      catalog: staging_catalog
+      schema: staging_schema
+  
+  prod:
+    mode: production
+    workspace:
+      root_path: /Shared/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      environment: prod
+      catalog: prod_catalog
+      schema: prod_schema

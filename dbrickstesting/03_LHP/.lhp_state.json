@@ -1,0 +1,194 @@
+{
+  "environments": {
+    "dev": {
+      "generated/dev/lhp_pipeline_sample/customer_ingestion.py": {
+        "checksum": "1887127f4d7de40496043c38f10e6cb0acdc4d80e14714d204732e1c173ba1e1",
+        "environment": "dev",
+        "file_composite_checksum": "35dbf8bd6e063ff243ed130ef7a990c6018db3e5e3cc22500adfc5f00bee067c",
+        "file_dependencies": {
+          "templates/standard_ingestion_template.yaml": {
+            "checksum": "a061854fd8d34b54a5f823ec802c942918fec4c388de3fe57da2b2b1be423811",
+            "last_modified": "2026-01-22T20:46:47.691822",
+            "mtime": null,
+            "path": "templates/standard_ingestion_template.yaml",
+            "type": "template"
+          }
+        },
+        "flowgroup": "customer_ingestion",
+        "generated_path": "generated/dev/lhp_pipeline_sample/customer_ingestion.py",
+        "pipeline": "lhp_pipeline_sample",
+        "source_yaml": "pipelines/01_ingestion/parquet_ingestions/customer_ingestion.yaml",
+        "source_yaml_checksum": "4fb3d508693e6623d84efb1fddd2d484dd90b4bbc25c574e46f1ab5ed321e08c",
+        "timestamp": "2026-01-22T22:16:50.615903",
+        "used_substitution_keys": [
+          "catalog",
+          "landing_path",
+          "bronze_schema"
+        ]
+      },
+      "generated/dev/lhp_pipeline_sample/gld_monthly_sales_trends.py": {
+        "checksum": "8356fd342b4e90c0abed9479f204a153f9c35e81c9b49b8a44329cf534409cf7",
+        "environment": "dev",
+        "file_composite_checksum": "b3cd2104cbf186e0b99e43dae07cad371651a201171aa5f089b872d450857fcc",
+        "file_dependencies": {},
+        "flowgroup": "gld_monthly_sales_trends",
+        "generated_path": "generated/dev/lhp_pipeline_sample/gld_monthly_sales_trends.py",
+        "pipeline": "lhp_pipeline_sample",
+        "source_yaml": "pipelines/03_gold/monthly_sales_trends.yaml",
+        "source_yaml_checksum": "a765a9020db403011ea5750f84a571852824f88c0e9ded5f126784102549fe53",
+        "timestamp": "2026-01-22T22:34:50.998020",
+        "used_substitution_keys": [
+          "gold_schema",
+          "catalog",
+          "silver_schema"
+        ]
+      },
+      "generated/dev/lhp_pipeline_sample/gld_product_performance.py": {
+        "checksum": "dc730b5e15ebc08eb69893a4b5226791e4fc394777b4ee60a7c5de4f02bcc562",
+        "environment": "dev",
+        "file_composite_checksum": "d2487f46ef16a0ae6271006ef94972b08b96f646e02a95aed6143c00de8c4d5d",
+        "file_dependencies": {},
+        "flowgroup": "gld_product_performance",
+        "generated_path": "generated/dev/lhp_pipeline_sample/gld_product_performance.py",
+        "pipeline": "lhp_pipeline_sample",
+        "source_yaml": "pipelines/03_gold/product_performance.yaml",
+        "source_yaml_checksum": "a75a7062820f8b997230440596bd83203628762458e80ae5ba89071de5b549a7",
+        "timestamp": "2026-01-22T22:34:50.974308",
+        "used_substitution_keys": [
+          "gold_schema",
+          "catalog",
+          "silver_schema"
+        ]
+      },
+      "generated/dev/lhp_pipeline_sample/product_ingestion.py": {
+        "checksum": "30f5513827de5b88c901a880b250904da073226f9fe3ccc2d165f78b84074327",
+        "environment": "dev",
+        "file_composite_checksum": "d2080a96e8ff4dfb5ecb04cc4e9dd300e511947c76ff82a7cf277788fed60ffd",
+        "file_dependencies": {
+          "templates/standard_ingestion_template.yaml": {
+            "checksum": "a061854fd8d34b54a5f823ec802c942918fec4c388de3fe57da2b2b1be423811",
+            "last_modified": "2026-01-22T20:46:47.691822",
+            "mtime": null,
+            "path": "templates/standard_ingestion_template.yaml",
+            "type": "template"
+          }
+        },
+        "flowgroup": "product_ingestion",
+        "generated_path": "generated/dev/lhp_pipeline_sample/product_ingestion.py",
+        "pipeline": "lhp_pipeline_sample",
+        "source_yaml": "pipelines/01_ingestion/parquet_ingestions/product_ingestion.yaml",
+        "source_yaml_checksum": "8dec2b73f2f821b3e786716f30868085968379f94aa109f001d9c3e7d9c5b4fe",
+        "timestamp": "2026-01-22T22:22:29.972003",
+        "used_substitution_keys": [
+          "catalog",
+          "landing_path",
+          "bronze_schema"
+        ]
+      },
+      "generated/dev/lhp_pipeline_sample/reviews_ingestion.py": {
+        "checksum": "ae45d7f3af06f4825356fc2ec0801347e6fe1b15041a5dae3e2155805b8371c3",
+        "environment": "dev",
+        "file_composite_checksum": "28cf3b1cacabd000c92541d3cafa5408cab4b8af89167f86d7fa6e429b36b545",
+        "file_dependencies": {
+          "templates/standard_ingestion_template.yaml": {
+            "checksum": "a061854fd8d34b54a5f823ec802c942918fec4c388de3fe57da2b2b1be423811",
+            "last_modified": "2026-01-22T20:46:47.691822",
+            "mtime": null,
+            "path": "templates/standard_ingestion_template.yaml",
+            "type": "template"
+          }
+        },
+        "flowgroup": "reviews_ingestion",
+        "generated_path": "generated/dev/lhp_pipeline_sample/reviews_ingestion.py",
+        "pipeline": "lhp_pipeline_sample",
+        "source_yaml": "pipelines/01_ingestion/parquet_ingestions/reviews_ingestion.yaml",
+        "source_yaml_checksum": "7a82faabe4a075ad941662b9510025bf2a4aadde124d6a8b01424702d5251b07",
+        "timestamp": "2026-01-22T22:22:29.977385",
+        "used_substitution_keys": [
+          "catalog",
+          "landing_path",
+          "bronze_schema"
+        ]
+      },
+      "generated/dev/lhp_pipeline_sample/sales_ingestion.py": {
+        "checksum": "fbfe5d8ee4535caa9537449275b9160491bea600a2359217ae9c5b2c3536ac6a",
+        "environment": "dev",
+        "file_composite_checksum": "b7841913ea010e979c33162e59aabd1f838acc9b2e3cbf7a75a67f67f5bb3ebc",
+        "file_dependencies": {
+          "templates/standard_ingestion_template.yaml": {
+            "checksum": "a061854fd8d34b54a5f823ec802c942918fec4c388de3fe57da2b2b1be423811",
+            "last_modified": "2026-01-22T20:46:47.691822",
+            "mtime": null,
+            "path": "templates/standard_ingestion_template.yaml",
+            "type": "template"
+          }
+        },
+        "flowgroup": "sales_ingestion",
+        "generated_path": "generated/dev/lhp_pipeline_sample/sales_ingestion.py",
+        "pipeline": "lhp_pipeline_sample",
+        "source_yaml": "pipelines/01_ingestion/parquet_ingestions/sales_ingestion.yaml",
+        "source_yaml_checksum": "dc665015cc68206b5d4141d1da8abec392d1c07801edc715d8d6a32e0d9efe01",
+        "timestamp": "2026-01-22T22:22:29.992789",
+        "used_substitution_keys": [
+          "catalog",
+          "landing_path",
+          "bronze_schema"
+        ]
+      },
+      "generated/dev/lhp_pipeline_sample/slv_reviews_master.py": {
+        "checksum": "d4ffe8eabfabd804d758e96aa5ea952c48b725d85e5d71a8bd13b8f6bac31e26",
+        "environment": "dev",
+        "file_composite_checksum": "4b4faccdd0b95e521561681bc99d3618d41463e5dd631f0830d6817117bb312c",
+        "file_dependencies": {},
+        "flowgroup": "slv_reviews_master",
+        "generated_path": "generated/dev/lhp_pipeline_sample/slv_reviews_master.py",
+        "pipeline": "lhp_pipeline_sample",
+        "source_yaml": "pipelines/02_silver/slv_reviews_master.yaml",
+        "source_yaml_checksum": "293f39f9e5daa7075a37126e9f0503038d90a18fd795091f4a0fa159828d2fe7",
+        "timestamp": "2026-01-22T22:31:21.785443",
+        "used_substitution_keys": [
+          "bronze_schema",
+          "silver_schema",
+          "catalog"
+        ]
+      },
+      "generated/dev/lhp_pipeline_sample/slv_sales_master.py": {
+        "checksum": "ebafe34794d81ad6274daf0b6cfb2de8c51876e7f029d290eaf5e6656b24e5c7",
+        "environment": "dev",
+        "file_composite_checksum": "2a94c7960591fdb3de18ce108badd0ca419435c10af02414280b94bc589238d2",
+        "file_dependencies": {},
+        "flowgroup": "slv_sales_master",
+        "generated_path": "generated/dev/lhp_pipeline_sample/slv_sales_master.py",
+        "pipeline": "lhp_pipeline_sample",
+        "source_yaml": "pipelines/02_silver/sales_master.yaml",
+        "source_yaml_checksum": "885c708c5e19c4bbfb13b3a5b8b2e13bda0795b74f39c569e7cd2853605c8f3a",
+        "timestamp": "2026-01-22T22:37:14.220897",
+        "used_substitution_keys": [
+          "silver_schema",
+          "bronze_schema",
+          "catalog"
+        ]
+      }
+    }
+  },
+  "global_dependencies": {
+    "dev": {
+      "project_config": {
+        "checksum": "731adbe3e7087b527509d9430f7e848d2771a6f005c99424831041fbf1b5cd43",
+        "last_modified": "2026-01-22T16:56:57.752595",
+        "mtime": null,
+        "path": "lhp.yaml",
+        "type": "project_config"
+      },
+      "substitution_file": {
+        "checksum": "4aa9c243a795fc70a3388d581296c2d647bed892dd61ca287da20e0d11947d38",
+        "last_modified": "2026-01-22T17:08:01.377517",
+        "mtime": null,
+        "path": "substitutions/dev.yaml",
+        "type": "substitution"
+      }
+    }
+  },
+  "last_updated": "2026-01-22T22:37:14.221553",
+  "version": "1.0"
+}

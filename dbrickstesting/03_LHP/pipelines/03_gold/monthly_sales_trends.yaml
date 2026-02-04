@@ -1,0 +1,38 @@
+pipeline: lhp_pipeline_sample
+flowgroup: gld_monthly_sales_trends
+
+actions:
+  - name: load_sales_master
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{silver_schema}.lhp_slv_sales_master"
+    target: v_gld_monthly_sales_master
+    description: "Load sales master from silver layer"
+  
+  - name: transform_monthly_sales_trends
+    type: transform
+    transform_type: sql
+    source: v_gld_monthly_sales_master
+    target: v_monthly_sales_trends
+    sql: |
+      SELECT
+        DATE_TRUNC('MONTH', sale_date) AS sale_month,
+        category,
+        COUNT(DISTINCT sale_id) AS total_transactions,
+        SUM(quantity) AS total_quantity_sold,
+        ROUND(SUM(total_amount), 2) AS total_revenue,
+        ROUND(AVG(total_amount), 2) AS avg_transaction_value,
+        COUNT(DISTINCT customer_name) AS unique_customers
+      FROM v_gld_monthly_sales_master
+      GROUP BY DATE_TRUNC('MONTH', sale_date), category
+    description: "Aggregate monthly sales trends by category"
+  
+  - name: write_monthly_sales_trends
+    type: write
+    source: v_monthly_sales_trends
+    write_target:
+      type: materialized_view
+      database: "{catalog}.{gold_schema}"
+      table: lhp_gld_monthly_sales_trends
+    description: "Monthly sales trends showing revenue and quantity by category"

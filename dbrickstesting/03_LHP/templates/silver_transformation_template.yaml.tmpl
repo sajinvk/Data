@@ -1,0 +1,23 @@
+name: silver_transformation_template
+version: "1.0"
+description: "Template for silver layer transactional facts with schema transform (append-only, no CDC)"
+
+parameters:
+  - name: table_name
+    type: string
+    required: true
+    description: "Short name for the fact (e.g., 'prch_ord_ln', 'pos_txn_ln')"
+  - name: path
+    type: string
+    required: true
+    description: "SQL code"
+
+actions:
+  - name: create_{{ table_name }}
+    type: write
+    write_target:
+      type: materialized_view
+      database: "{catalog}.{gold_schema}"
+      table: "{{ table_name }}"
+      sql: "{{ path }}"
+            

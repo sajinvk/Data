@@ -1,0 +1,68 @@
+pipeline: lhp_pipeline_sample
+flowgroup: slv_reviews_master
+
+actions:
+  - name: load_reviews
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{bronze_schema}.lhp_reviews"
+    target: v_reviews
+    description: "Load reviews from bronze layer"
+  
+  - name: load_customers
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{bronze_schema}.lhp_customers"
+    target: v_reviews_customers
+    description: "Load customers from bronze layer"
+  
+  - name: load_products
+    type: load
+    source:
+      type: delta
+      table: "{catalog}.{bronze_schema}.lhp_products"
+    target: v_reviews_products
+    description: "Load products from bronze layer"
+  
+  - name: transform_reviews_master
+    type: transform
+    transform_type: sql
+    source: [v_reviews, v_reviews_customers, v_reviews_products]
+    target: v_reviews_master
+    sql: |
+      SELECT
+        r.review_id,
+        r.customer_id,
+        concat(c.first_name, " ", c.last_name) AS customer_name,
+        c.email AS customer_email,
+        c.customer_segment,
+        r.product_id,
+        p.product_name,
+        p.brand,
+        p.category,
+        p.subcategory,
+        p.price AS product_price,
+        r.rating,
+        r.review_text,
+        r.review_date,
+        r.verified_purchase,
+        r.helpful_count
+      FROM v_reviews r
+      LEFT JOIN v_reviews_customers c
+        ON r.customer_id = c.customer_id
+      LEFT JOIN v_reviews_products p
+        ON r.product_id = p.product_id
+    description: "Transform reviews with customer and product details"
+  
+  - name: write_reviews_master
+    type: write
+    source: v_reviews_master
+    write_target:
+      type: materialized_view
+      database: "{catalog}.{silver_schema}"
+      table: lhp_slv_reviews_master
+    description: "Materialized view for reviews master table"
+
+

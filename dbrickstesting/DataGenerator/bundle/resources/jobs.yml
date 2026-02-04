@@ -1,0 +1,146 @@
+resources:
+  jobs:
+    # Main AI Data Generator Job (Generic Template)
+    ai_data_generator_job:
+      name: "[${bundle.target}] AI Data Generator"
+      
+      # Use serverless compute for the job
+      tasks:
+        - task_key: generate_product_data
+          new_cluster:
+            spark_version: ${var.cluster_spark_version}
+            node_type_id: ${var.cluster_node_type}
+            num_workers: 0  # Single node for serverless
+            spark_conf:
+              spark.databricks.cluster.profile: serverless
+              spark.databricks.repl.allowedLanguages: python,sql
+            custom_tags:
+              Project: "AI Data Generator"
+              Environment: ${var.environment}
+            enable_elastic_disk: true
+          
+          notebook_task:
+            notebook_path: /Workspace/Users/shreya.sharma@databricks.com/ausunity/DataGenerator/ai_data_generator
+            base_parameters:
+              industry: "healthcare"
+              domain: "patient records"
+              table_name: "patients"
+              target_catalog: ${var.catalog}
+              target_schema: ${var.schema}
+              num_rows: "50000"
+              ai_model_endpoint: "databricks-meta-llama-3-3-70b-instruct"
+              custom_schema_json: ""
+              column_constraints_json: "{}"
+          
+          timeout_seconds: 86400
+          max_retries: 2
+          min_retry_interval_millis: 300000
+          retry_on_timeout: true
+      
+      email_notifications:
+        on_failure:
+          - your-email@example.com
+      
+      timeout_seconds: 86400
+      max_concurrent_runs: 1
+
+    # Healthcare Patient Records Job
+    generate_patients_job:
+      name: "[${bundle.target}] Generate Healthcare Patients"
+      
+      tasks:
+        - task_key: generate_patients
+          new_cluster:
+            spark_version: ${var.cluster_spark_version}
+            node_type_id: ${var.cluster_node_type}
+            num_workers: 0
+            spark_conf:
+              spark.databricks.cluster.profile: serverless
+            custom_tags:
+              Project: "AI Data Generator"
+              UseCase: "Healthcare"
+              Environment: ${var.environment}
+            enable_elastic_disk: true
+          
+          notebook_task:
+            notebook_path: /Workspace/Users/shreya.sharma@databricks.com/ausunity/DataGenerator/ai_data_generator
+            base_parameters:
+              industry: "healthcare"
+              domain: "patient records"
+              table_name: "patients"
+              target_catalog: ${var.catalog}
+              target_schema: ${var.schema}
+              num_rows: "50000"
+              ai_model_endpoint: "databricks-meta-llama-3-3-70b-instruct"
+              custom_schema_json: ""
+              column_constraints_json: '{"patient_id": "Unique integers starting from 10000", "age": "Ages between 18 and 95"}'
+          
+          timeout_seconds: 86400
+
+    # Retail Product Inventory Job
+    generate_products_job:
+      name: "[${bundle.target}] Generate Retail Products"
+      
+      tasks:
+        - task_key: generate_products
+          new_cluster:
+            spark_version: ${var.cluster_spark_version}
+            node_type_id: ${var.cluster_node_type}
+            num_workers: 0
+            spark_conf:
+              spark.databricks.cluster.profile: serverless
+            custom_tags:
+              Project: "AI Data Generator"
+              UseCase: "Retail"
+              Environment: ${var.environment}
+            enable_elastic_disk: true
+          
+          notebook_task:
+            notebook_path: /Workspace/Users/shreya.sharma@databricks.com/ausunity/DataGenerator/ai_data_generator
+            base_parameters:
+              industry: "retail"
+              domain: "product inventory"
+              table_name: "products"
+              target_catalog: ${var.catalog}
+              target_schema: ${var.schema}
+              num_rows: "20000"
+              ai_model_endpoint: "databricks-meta-llama-3-3-70b-instruct"
+              custom_schema_json: '{"product_id": "INT", "product_name": "STRING", "category": "STRING", "price": "DOUBLE", "stock_quantity": "INT", "supplier": "STRING", "last_restocked": "DATE"}'
+              column_constraints_json: '{"product_id": "Range between 1 and 200", "price": "Between 5.00 and 500.00", "stock_quantity": "Between 0 and 1000"}'
+          
+          timeout_seconds: 86400
+
+    # Finance Transactions Job
+    generate_transactions_job:
+      name: "[${bundle.target}] Generate Finance Transactions"
+      
+      tasks:
+        - task_key: generate_transactions
+          new_cluster:
+            spark_version: ${var.cluster_spark_version}
+            node_type_id: ${var.cluster_node_type}
+            num_workers: 0
+            spark_conf:
+              spark.databricks.cluster.profile: serverless
+            custom_tags:
+              Project: "AI Data Generator"
+              UseCase: "Finance"
+              Environment: ${var.environment}
+            enable_elastic_disk: true
+          
+          notebook_task:
+            notebook_path: /Workspace/Users/shreya.sharma@databricks.com/ausunity/DataGenerator/ai_data_generator
+            base_parameters:
+              industry: "finance"
+              domain: "transaction records"
+              table_name: "transactions"
+              target_catalog: ${var.catalog}
+              target_schema: ${var.schema}
+              num_rows: "10000"
+              ai_model_endpoint: "databricks-meta-llama-3-3-70b-instruct"
+              custom_schema_json: ""
+              column_constraints_json: '{"transaction_id": "Sequential IDs starting from 100000", "amount": "Between 10.00 and 10000.00", "transaction_type": "Either debit or credit", "status": "Either completed, pending, or failed"}'
+          
+          timeout_seconds: 86400
+
+  

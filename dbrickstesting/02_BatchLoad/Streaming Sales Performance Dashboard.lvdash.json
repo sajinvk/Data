@@ -1,0 +1,737 @@
+{
+  "datasets": [
+    {
+      "name": "e03b1fe3",
+      "displayName": "gld_monthly_sales_trends",
+      "queryLines": [
+        "SELECT * FROM pilotws.pilotschema.streaming_gld_monthly_sales_trends"
+      ]
+    },
+    {
+      "name": "f6aa8177",
+      "displayName": "gld_product_performance",
+      "queryLines": [
+        "SELECT * FROM pilotws.pilotschema.streaming_gld_product_performance"
+      ]
+    },
+    {
+      "name": "b811b912",
+      "displayName": "gld_top_customer_insights",
+      "queryLines": [
+        "SELECT * FROM pilotws.pilotschema.streaming_gld_top_customer_insights"
+      ]
+    },
+    {
+      "name": "15dd6678",
+      "displayName": "slv_reviews_master",
+      "queryLines": [
+        "SELECT * FROM pilotws.pilotschema.streaming_slv_reviews_master"
+      ]
+    },
+    {
+      "name": "d8fcc7f4",
+      "displayName": "slv_sales_master",
+      "queryLines": [
+        "SELECT * FROM pilotws.pilotschema.streaming_slv_sales_master"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "8b58e042",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "unique-customers-over-time",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e03b1fe3",
+                  "fields": [
+                    {
+                      "name": "daily(sale_month)",
+                      "expression": "DATE_TRUNC(\"DAY\", `sale_month`)"
+                    },
+                    {
+                      "name": "sum(unique_customers)",
+                      "expression": "SUM(`unique_customers`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "daily(sale_month)",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(unique_customers)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Unique Customers Over Time",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "category-wise-sales-distribution",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e03b1fe3",
+                  "fields": [
+                    {
+                      "name": "category",
+                      "expression": "`category`"
+                    },
+                    {
+                      "name": "sum(total_transactions)",
+                      "expression": "SUM(`total_transactions`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "category",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_transactions)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Total Transactions by Category",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 2,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "total-transactions-last-12-months",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e03b1fe3",
+                  "fields": [
+                    {
+                      "name": "sum(total_transactions)",
+                      "expression": "SUM(`total_transactions`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(total_transactions)"
+                }
+              },
+              "frame": {
+                "title": "Total Transactions in Last 12 Months",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "total-transactions-last-12-months-1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e03b1fe3",
+                  "fields": [
+                    {
+                      "name": "sum(unique_customers)",
+                      "expression": "SUM(`unique_customers`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(unique_customers)"
+                }
+              },
+              "frame": {
+                "title": "Total Unique Customers in Last 12 Months",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "average-rating-given-by-customer",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b811b912",
+                  "fields": [
+                    {
+                      "name": "avg(avg_rating_given)",
+                      "expression": "AVG(`avg_rating_given`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(avg_rating_given)"
+                }
+              },
+              "frame": {
+                "title": "Average Rating Given by Customer",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "proportion-total-items-purchased",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e03b1fe3",
+                  "fields": [
+                    {
+                      "name": "category",
+                      "expression": "`category`"
+                    },
+                    {
+                      "name": "hourly(sale_month)",
+                      "expression": "DATE_TRUNC(\"HOUR\", `sale_month`)"
+                    },
+                    {
+                      "name": "sum(total_revenue)",
+                      "expression": "SUM(`total_revenue`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "hourly(sale_month)",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_revenue)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "category",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Monthly Sales Trends",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "unique-customers-time-1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f6aa8177",
+                  "fields": [
+                    {
+                      "name": "avg(avg_sale_amount)",
+                      "expression": "AVG(`avg_sale_amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(avg_sale_amount)"
+                }
+              },
+              "frame": {
+                "title": "Average Sale Amount",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "customer-segments-distribution",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "d8fcc7f4",
+                  "fields": [
+                    {
+                      "name": "count(customer_id)",
+                      "expression": "COUNT(`customer_id`)"
+                    },
+                    {
+                      "name": "customer_segment",
+                      "expression": "`customer_segment`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "count(customer_id)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "customer_segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "title": "Customer Segments Distribution",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 14,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "discount-percentages-by-product-brand",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "d8fcc7f4",
+                  "fields": [
+                    {
+                      "name": "brand",
+                      "expression": "`brand`"
+                    },
+                    {
+                      "name": "avg(discount_percent)",
+                      "expression": "AVG(`discount_percent`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "brand",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(discount_percent)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Discount Percentages by Product Brand",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 14,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "average-product-rating-by-category",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "15dd6678",
+                  "fields": [
+                    {
+                      "name": "category",
+                      "expression": "`category`"
+                    },
+                    {
+                      "name": "avg(rating)",
+                      "expression": "AVG(`rating`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "category",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(rating)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Average Product Rating by Category",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 20,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "review-count-over-time",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "15dd6678",
+                  "fields": [
+                    {
+                      "name": "daily(review_date)",
+                      "expression": "DATE_TRUNC(\"DAY\", `review_date`)"
+                    },
+                    {
+                      "name": "count(review_id)",
+                      "expression": "COUNT(`review_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "daily(review_date)",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(review_id)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Review Count Over Time",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 20,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "total-distinct-reviews",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "15dd6678",
+                  "fields": [
+                    {
+                      "name": "countdistinct(review_id)",
+                      "expression": "COUNT(DISTINCT `review_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "countdistinct(review_id)"
+                }
+              },
+              "frame": {
+                "title": "Total Number of Distinct Reviews",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "top-performing-category",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "d8fcc7f4",
+                  "fields": [
+                    {
+                      "name": "avg(discount_percent)",
+                      "expression": "AVG(`discount_percent`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(discount_percent)"
+                }
+              },
+              "frame": {
+                "title": "Average Discount Percentage",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 5,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "a9c26c67",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "d3e36b51",
+            "queries": [
+              {
+                "name": "dashboards/01f0f4e4380311148c6ab9ff7ecba73c/datasets/01f0f4e43803162da64e869cb04124da_category",
+                "query": {
+                  "datasetName": "e03b1fe3",
+                  "fields": [
+                    {
+                      "name": "category",
+                      "expression": "`category`"
+                    },
+                    {
+                      "name": "category_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "category",
+                    "queryName": "dashboards/01f0f4e4380311148c6ab9ff7ecba73c/datasets/01f0f4e43803162da64e869cb04124da_category"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              },
+              "selection": {
+                "defaultSelection": {
+                  "values": {
+                    "dataType": "STRING",
+                    "values": [
+                      {}
+                    ],
+                    "not": true
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
