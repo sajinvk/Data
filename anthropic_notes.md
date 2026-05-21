@@ -29,21 +29,23 @@
 ## ⚙️ Working with API
 
 ```python
+"
 from anthropic import Anthropic
 
-client = Anthropic()
+client = Anthropic()  # uses API key from environment
 
 response = client.messages.create(
-    model="MODEL_NAME",
-    max_tokens=200,
-    messages=[
-        {"role": "user", "content": "Your prompt"}
+    model=""MODEL_NAME"",              # Required
+    max_tokens=INTEGER,              # Required
+    messages=[                       # Required
+        {""role"": ""user"", ""content"": ""Your prompt""},
+        {""role"": ""assistant"", ""content"": ""Previous response (optional)""}
     ],
-    system="You are a helpful assistant",
-    temperature=0.0
+    system=""SYSTEM_PROMPT"",          # Optional (instructions for behavior)
+    temperature=0.0,                 # Optional (0–1 randomness)
+    stop_sequences=[""STOP_TEXT""],    # Optional
 )
-
-print(response.content[0].text)
+"
 ```
 
 ---
@@ -51,26 +53,34 @@ print(response.content[0].text)
 ## 💬 Chatbot Example
 
 ```python
+print("Simple Chatbot (type 'quit' to exit)")
+# Store conversation history
 messages = []
-
 while True:
+    # Get user input
     user_input = input("You: ")
-
+    # Check for quit command
     if user_input.lower() == 'quit':
+        print("Goodbye!")
         break
-
+    # Add user message to history
     messages.append({"role": "user", "content": user_input})
-
-    response = client.messages.create(
-        model="MODEL_NAME",
-        max_tokens=200,
-        messages=messages
-    )
-
-    reply = response.content[0].text
-    print(reply)
-
-    messages.append({"role": "assistant", "content": reply})
+    try:
+        # Get response from Claude
+        response = client.messages.create(
+            model=MODEL_NAME,
+            max_tokens=200,
+            messages=messages
+        )
+        # Extract and print Claude's response
+        asst_message = response.content[0].text
+        print("Assistant:", asst_message)
+        
+        # Add assistant response to history
+        messages.append({"role": "assistant", "content": asst_message})
+        
+    except Exception as e:
+        print(f"An error occurred: {e}")
 ```
 
 ---
@@ -96,9 +106,19 @@ response = client.messages.create(
 messages = [
     {
         "role": "user",
-        "content": [
-            {"type": "text", "text": "Describe this image"}
-        ]
+        "content": [{
+            "type": "image",
+            "source": {
+                "type": "base64",
+                "media_type": "image/png",
+                "data": base64_string
+            },
+        },
+        {
+            "type": "text",
+            "text": """How many to-go containers of each type 
+            are in this image?"""
+        }]
     }
 ]
 ```
@@ -109,11 +129,12 @@ messages = [
 
 ```python
 with client.messages.stream(
-    model="MODEL_NAME",
-    messages=[{"role": "user", "content": "Write a poem"}],
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "write a poem"}],
+    model=MODEL_NAME,
 ) as stream:
-    for text in stream.text_stream:
-        print(text, end="")
+  for text in stream.text_stream:
+      print(text, end="", flush=True)
 ```
 
 ---
@@ -123,7 +144,12 @@ with client.messages.stream(
 ### Role
 
 ```python
-role = "You are a sentiment analysis assistant"
+setting_the_role = """
+You are an AI assistant specialized in analyzing customer reviews. 
+Your task is to determine the overall sentiment of a given review 
+and extract any specific complaints mentioned. 
+Please follow these instructions carefully:
+"""
 ```
 
 ### Structured Prompt
@@ -141,6 +167,15 @@ prompt = """
 
 <output>
 Return JSON
+{
+  "sentiment_score": "Positive|Negative|Neutral",
+  "sentiment_analysis": "Explanation of sentiment classification",
+  "complaints": [
+    "Complaint 1",
+    "Complaint 2",
+    "..."
+  ]
+}
 </output>
 """
 ```
@@ -150,10 +185,64 @@ Return JSON
 ## 🚀 Prompt Caching
 
 - Cache reusable prompt sections
+
+cache a prefix of your prompt so that repeated requests reuse it instead of reprocessing it from scratch.
+
+You mark part of your prompt as cacheable.
+First request (cache write): cache_creation_input_tokens
+Subsequent requests (cache read): cache_read_input_tokens
+
+**ephemeral_5m_input_tokens**: 108428
+→ 108K tokens reused from 5‑minute cache (cheap + fast)
+
+
+**ephemeral_1h_input_tokens**: 0
+→ No usage of 1‑hour cacheephemeral_5m_input_tokens: 108428
+
+
+Prompt Caching Pricing
+
+Cache write tokens are 25% more expensive than base input tokens
+Cache read tokens are 90% cheaper than base input tokens
+Regular input and output tokens are priced at standard rates 
 - Write = expensive
 - Read = ~90% cheaper
 
 ---
+
+
+```python
+def make_cached_api_call():
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "<book>" + book_content + "</book>",
+                    "cache_control": {"type": "ephemeral"}
+                },
+                {
+                    "type": "text",
+                    "text": "What happens in chapter 5?"
+                }
+            ]
+        }
+    ]
+
+    start_time = time.time()
+    response = client.messages.create(
+        model=MODEL_NAME,
+        max_tokens=500,
+        messages=messages,
+    )
+    end_time = time.time()
+
+    return response, end_time - start_time
+```
+
+**Output will look like:**
+usage=Usage(cache_creation_input_tokens=108428, cache_read_input_tokens=0, input_tokens=10, output_tokens=351, cache_creation={'ephemeral_5m_input_tokens': 108428, 'ephemeral_1h_input_tokens': 0}, service_tier='standard', inference_geo='not_available'), stop_details=None)
 
 ## 🔁 Multi-turn Caching
 
@@ -190,3 +279,5 @@ tool = {
 - Choose model based on complexity
 
 ---
+
+## Stop reasons 
