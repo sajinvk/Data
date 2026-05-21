@@ -271,6 +271,11 @@ tool = {
 
 ---
 
+
+##  Handling STOP Reasons 
+🔗 [Anthropic Stop reasons] (https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons)
+
+
 ## ✅ Key Takeaways
 
 - Use structured prompts (XML/JSON)
