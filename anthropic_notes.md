@@ -296,6 +296,11 @@ tool = {
            'service_tier': 'standard'}}
 
 
+
+
+
+
+
 ## ✅ Key Takeaways
 
 - Use structured prompts (XML/JSON)
@@ -305,4 +310,10 @@ tool = {
 
 ---
 
-## Stop reasons 
+## Stop reasons
+
+- **`end_turn`** — Model finished naturally (normal completion)
+- **`max_tokens`** — Hit token limit before finishing
+- **`stop_sequence`** — Encountered a user-defined stop sequence
+- **`tool_call` / `function_call`** — Model is requesting a tool/function
+- **`content_filter`** — Output was stopped due to safety filtering
