@@ -295,11 +295,7 @@ tool = {
            'output_tokens': 23,
            'service_tier': 'standard'}}
 
-
-
-
-
-
+```
 
 ## ✅ Key Takeaways
 
@@ -317,3 +313,9 @@ tool = {
 - **`stop_sequence`** — Encountered a user-defined stop sequence
 - **`tool_call` / `function_call`** — Model is requesting a tool/function
 - **`content_filter`** — Output was stopped due to safety filtering
+
+
+
+
+
+
