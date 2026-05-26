@@ -533,3 +533,132 @@ tools = [
 ```
 
 
+# 🤖 Generic AI Agent Loop (Think → Use Tools → Loop)
+
+## ✅ Purpose
+Implements an AI Agent that:
+- Thinks (LLM reasoning)
+- Uses tools when required
+- Loops until a final answer is produced
+
+---
+
+## 🔧 Code Template
+
+```python
+def run_agent(query, client, tools, execute_tool):
+    # Initialize conversation
+    messages = [
+        {"role": "user", "content": query}
+    ]
+
+    while True:
+        # Call model
+        response = client.messages.create(
+            model="MODEL_NAME",
+            max_tokens=1024,
+            tools=tools,
+            messages=messages
+        )
+
+        assistant_content = []
+
+        for block in response.content:
+
+            # ✅ Handle text response
+            if block.type == "text":
+                print(block.text)
+                assistant_content.append(block)
+
+            # 🔧 Handle tool call
+            elif block.type == "tool_use":
+                assistant_content.append(block)
+
+                # Append assistant tool call
+                messages.append({
+                    "role": "assistant",
+                    "content": assistant_content
+                })
+
+                tool_name = block.name
+                tool_args = block.input
+                tool_id = block.id
+
+                print(f"[Tool Call] {tool_name} → {tool_args}")
+
+                # Execute tool
+                result = execute_tool(tool_name, tool_args)
+
+                # Send tool result back
+                messages.append({
+                    "role": "user",
+                    "content": [{
+                        "type": "tool_result",
+                        "tool_use_id": tool_id,
+                        "content": result
+                    }]
+                })
+
+                # Continue loop
+                break
+
+        # Exit condition (only text response)
+        if all(block.type == "text" for block in response.content):
+            return
+
+```
+
+
+## 🔄 Execution Flow
+
+```text
+User Query
+   ↓
+Send request to Model
+   ↓
+Receive Response
+   ↓
+Does response contain tool call?
+   ↓
+ ┌───────────────┬────────────────────┐
+ │ No            │ Yes                │
+ │               │                    │
+Return Answer ✅  Extract Tool Details │
+                 ↓                    │
+            Execute Tool              │
+                 ↓                    │
+            Get Tool Result           │
+                 ↓                    │
+      Append Result to Messages       │
+                 ↓                    │
+      Send Updated Messages to Model  │
+                 ↓                    │
+           Continue Loop 🔁           │
+ └───────────────┴────────────────────┘
+                 ↓
+         Final Answer Returned ✅
+
+
+
+messages → Stores full conversation context
+tools → Defines available tool schemas
+execute_tool() → Executes tool logic
+loop → Enables multi-step reasoning
+```
+
+ ### ⚠️ **Important Rules**
+
+Append assistant tool call before execution
+Include tool_use_id in tool result
+Continue loop until only text response
+Preserve full message history
+
+
+### 🧠  **Mental Model**
+
+THINK  → Model decides next action
+ACT    → Tool is called
+OBSERVE → Tool result is received
+REPEAT → Continue until final answer
+
+
