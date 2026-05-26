@@ -504,18 +504,32 @@ Server
 Tools | Resources | Prompts
 -----------------------
 
+🧠 **Tools** Syntax
+```python
+tools = [
+  {
+    "name": "string",                // ✅ REQUIRED: Unique tool name (snake_case recommended)
 
-🚀 Why MCP Matters
-✅ Connect AI to real-world data
-✅ Standardize tool usage
-✅ Reduce prompt engineering effort
-✅ Build scalable AI apps
+    "description": "string",         // ✅ REQUIRED: Clear description of what the tool does
 
+    "input_schema": {                // ✅ REQUIRED: JSON Schema defining input
+      "type": "object",              // ✅ REQUIRED: Must be "object"
 
-😄 Reality Check
-Without MCP:
-AI: "I think this is correct 🤷"
+      "properties": {               // ✅ REQUIRED: Define input parameters
+        "param_name": {
+          "type": "string | number | integer | boolean | array | object",  // ✅ REQUIRED
+          "description": "string",   // ✅ REQUIRED
+          "default": "any"           // ❌ OPTIONAL
+        }
+      },
 
-With MCP:
-AI: "I queried your DB, analyzed it, here’s a chart 📊"
+      "required": [                 // ❌ OPTIONAL but recommended
+        "param_name"                // Fields that must be provided
+      ]
+    }
+  }
+]
+
+```
+
 
