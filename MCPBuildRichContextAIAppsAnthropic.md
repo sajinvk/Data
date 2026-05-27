@@ -711,50 +711,193 @@ The **Model Context Protocol (MCP)** allows applications and AI agents to:
 
 ---
 
-## 🛠️ Tools Provided
+## ⚙️ Setup Instructions
 
-### 🔍 1. `search_papers`
+### ✅ Prerequisites
 
-Search for research papers and store them locally.
-
-**Inputs:**
-- `topic` (string)
-- `max_results` (int, optional)
-
-**Output:**
-- List of paper IDs
+- Python 3.10+
+- Node.js (required for MCP Inspector via `npx`)
+- `uv` (Python environment + dependency manager)
 
 ---
 
-### 📄 2. `extract_info`
+## 🔧 Installation
 
-Retrieve stored information about a paper.
+> Run the following commands in a terminal from inside your project folder.
 
-**Input:**
-- `paper_id`
+```bash
+# Navigate to the project directory
+cd mcp_project
 
-**Output:**
-- JSON string with paper details
+# Initialize the project (creates pyproject metadata and uv config)
+uv init
+
+# Create a virtual environment
+uv venv
+
+# Activate the environment (Windows - CMD/PowerShell)
+.venv\Scripts\activate
+
+# Install dependencies for this server
+uv add mcp arxiv
+```
+
+### 🪟 Notes for Windows vs Mac/Linux
+
+- **Windows activation**
+  ```bash
+  .venv\Scripts\activate
+  ```
+
+- **Mac/Linux activation**
+  ```bash
+  source .venv/bin/activate
+  ```
 
 ---
 
-## 🏗️ Architecture
+## ▶️ Running the Server
 
-### 🔹 Overall System
+Run the MCP server using `uv`:
+
+```bash
+uv run research_server.py
+```
+
+### ✅ What you should expect
+- The server starts and listens using the **stdio transport**
+- It will not open a browser window (stdio is designed for tool-based clients like the Inspector)
+
+---
+
+## 🧪 Testing with MCP Inspector
+
+Use the MCP Inspector to interactively test your tools.
+
+```bash
+npx @modelcontextprotocol/inspector uv run research_server.py
+```
+
+### ✅ What this does
+- Launches the MCP Inspector UI
+- Lets you:
+  - List available tools
+  - Provide inputs to a tool
+  - See tool responses and debug easily
+
+### 🧭 Inspector UI Configuration (Typical)
+In the Inspector UI:
+- **Command**: `uv`
+- **Arguments**: `run research_server.py`
+
+> In hosted lab environments, you may also need to set an **Inspector Proxy Address** (not needed if running fully local).
+
+---
+
+## 💾 Data Storage Design
+
+This server stores arXiv results locally so that later tools can reuse them without calling the API again.
+
+### 📌 Storage path
+Results are written to:
+
+```text
+papers/<topic>/papers_info.json
+```
+
+Example:
+
+```text
+papers/machine_learning/papers_info.json
+papers/natural_language_processing/papers_info.json
+```
+
+### ✅ Why store locally?
+- Avoid repeated API calls (faster + more reliable)
+- Enable reuse across sessions
+- Keep a simple, inspectable cache for learning and debugging
+
+---
+
+## 🧠 Design Decisions (Why things are done this way)
+
+### ✅ Why FastMCP?
+FastMCP provides a **high-level MCP server interface**:
+- You write normal Python functions
+- Decorate them with `@mcp.tool()`
+- FastMCP automatically handles:
+  - tool registration
+  - schema generation (from type hints + docstrings)
+  - protocol plumbing
+
+### ✅ Why JSON storage instead of a database?
+JSON is perfect for learning:
+- Easy to read
+- Easy to debug
+- No extra setup (no DB required)
+- Works well for small-scale caching
+
+### ✅ Why split into two tools?
+
+| Tool          | Responsibility       |
+|--------------|----------------------|
+| `search_papers` | Fetch and store papers by topic |
+| `extract_info`  | Retrieve stored paper metadata by ID |
+
+This separation:
+- Keeps each tool focused on one responsibility
+- Makes the system easier to extend (e.g., add summarization later)
+- Matches how real tool ecosystems are designed
+
+---
+
+## 🏗️ Architecture Diagrams (Mermaid)
+
+### 1) Overall MCP System Architecture
 
 ```mermaid
 flowchart TD
-    A[Client / MCP Inspector] --> B[MCP Server]
-    B --> C[search_papers Tool]
-    B --> D[extract_info Tool]
+    A[Client / MCP Inspector / AI Agent] --> B[MCP Server - FastMCP]
+    B --> C[Tool: search_papers]
+    B --> D[Tool: extract_info]
     C --> E[arXiv API]
-    C --> F[Local Storage JSON]
+    C --> F[Local Storage: JSON]
     D --> F
 ```
 
+---
+
+### 2) Tool Flow: `search_papers`
+
 ```mermaid
+flowchart LR
+    A[Input: topic, max_results] --> B[search_papers]
+    B --> C[Query arXiv API]
+    C --> D[Receive paper results]
+    D --> E[Extract metadata fields]
+    E --> F[Write papers_info.json]
+    F --> G[Return list of paper IDs]
+```
 
+---
 
+### 3) Tool Flow: `extract_info`
+
+```mermaid
+flowchart LR
+    A[Input: paper_id] --> B[extract_info]
+    B --> C[Scan papers/ topic folders]
+    C --> D[Open papers_info.json files]
+    D --> E{paper_id exists?}
+    E -- Yes --> F[Return JSON metadata string]
+    E -- No --> G[Return not-found message]
+```
+
+---
+
+### 4) MCP Communication Model (stdio)
+
+```mermaid
 sequenceDiagram
     participant Client
     participant Server
@@ -762,25 +905,74 @@ sequenceDiagram
 
     Client->>Server: ListToolsRequest
     Server-->>Client: Tools List
-    
-    Client->>Server: CallTool(search_papers)
-    Server->>Tool: Execute
-    Tool-->>Server: Result
-    Server-->>Client: Response
 
-
+    Client->>Server: CallToolRequest(search_papers)
+    Server->>Tool: Execute function
+    Tool-->>Server: Return result
+    Server-->>Client: Tool output
 ```
 
-```mermaid
+---
 
+### 5) Project Structure
+
+```mermaid
 flowchart TD
     A[mcp_project/] --> B[research_server.py]
     A --> C[papers/]
-    C --> D[topic_1/]
-    C --> E[topic_2/]
+    C --> D[topic_folder_1/]
+    C --> E[topic_folder_2/]
     D --> F[papers_info.json]
     E --> G[papers_info.json]
-
 ```
 
+---
 
+## ⚠️ Common Issues & Fixes
+
+### ❌ Running shell commands in Jupyter Notebook cells
+Jupyter cells run Python, not shell commands.
+
+✅ Use:
+- a Terminal (recommended), OR
+- prefix shell commands with `!` (not persistent for env activation)
+
+---
+
+### ❌ Using Linux `source` on Windows
+On Windows, `source` doesn’t exist.
+
+✅ Use:
+```bash
+.venv\Scripts\activate
+```
+
+---
+
+### ❌ `uv` not recognized
+If your terminal can’t find `uv`, try running it via Python:
+
+```bash
+python -m uv --version
+```
+
+If that works, then your PATH needs updating for `uv` scripts.
+
+---
+
+## 🚀 Future Enhancements
+
+- Add HTTP transport (remote MCP server)
+- Add LLM agent integration
+- Add embeddings + vector search for papers
+- Replace JSON storage with SQLite/Postgres
+- Add more tools (summarize paper, extract citations, etc.)
+
+---
+
+## 📚 Resources
+
+- FastMCP: https://github.com/jlowin/fastmcp  
+- MCP Docs: https://modelcontextprotocol.io/  
+- MCP Inspector: https://github.com/modelcontextprotocol/inspector  
+- arXiv API: https://arxiv.org/help/api
