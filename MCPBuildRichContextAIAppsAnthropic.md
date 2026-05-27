@@ -680,83 +680,133 @@ Layer 4: Hosting / Platform
 👉 Databricks, Azure, MCP Cloud
 
 
-# 📚 Research MCP Server
+# 🚀 MCP Research Server (FastMCP + arXiv)
 
-## 🚀 Overview
-
-This project implements a simple **Model Context Protocol (MCP) server** using **FastMCP**.  
-It enables AI agents to search, store, and retrieve research paper metadata from **arXiv**.
-
-The server exposes two tools:
-- 🔍 `search_papers` → Search and store research papers
-- 📄 `extract_info` → Retrieve stored paper metadata
+A simple **Model Context Protocol (MCP) server** built using **FastMCP** that exposes tools to search and retrieve research papers from arXiv.
 
 ---
 
-## 🏗️ Project Structure
+## 📌 Overview
 
-``
----
+This project demonstrates how to build an MCP server that:
 
-## 🧠 Key Concepts
-
-- **MCP Server** → Exposes tools to AI agents
-- **FastMCP** → Framework to build MCP servers
-- **Tools** → Functions callable by AI agents
-- **arXiv API** → External source for research papers
+- ✅ Exposes tools using `FastMCP`
+- ✅ Fetches research papers from arXiv
+- ✅ Stores results locally as JSON
+- ✅ Allows retrieval of stored paper information
+- ✅ Can be tested using the MCP Inspector
 
 ---
 
-## ⚙️ Code Overview
+## 🧠 What is MCP?
 
-### ✅ Server Initialization
+The **Model Context Protocol (MCP)** allows applications and AI agents to:
 
-```python
-from mcp.server.fastmcp import FastMCP
+- Discover available tools
+- Execute tools programmatically
 
-mcp = FastMCP("research")
+### Core Capabilities:
+1. **List Tools**
+2. **Call Tools**
+
+---
+
+## 🛠️ Tools Provided
+
+### 🔍 1. `search_papers`
+
+Search for research papers and store them locally.
+
+**Inputs:**
+- `topic` (string)
+- `max_results` (int, optional)
+
+**Output:**
+- List of paper IDs
+
+---
+
+### 📄 2. `extract_info`
+
+Retrieve stored information about a paper.
+
+**Input:**
+- `paper_id`
+
+**Output:**
+- JSON string with paper details
+
+---
+
+## 🏗️ Architecture
+
+### 🔹 Overall System
+
+```mermaid
+flowchart TD
+    A[Client / MCP Inspector] --> B[MCP Server]
+    B --> C[search_papers Tool]
+    B --> D[extract_info Tool]
+    C --> E[arXiv API]
+    C --> F[Local Storage JSON]
+    D --> F
+
+🔹 Tool Execution Flow (search_papers)
+Mermaidflowchart LR    A[User Input: Topic] --> B[search_papers]    B --> C[Call arXiv API]    C --> D[Fetch Results]    D --> E[Process Data]    E --> F[Save JSON]    F --> G[Return Paper IDs]Show more lines
+
+🔹 Tool Execution Flow (extract_info)
+Mermaidflowchart LR    A[Paper ID] --> B[extract_info]    B --> C[Scan Directories]    C --> D[Load JSON]    D --> E{ID Found?}    E -- Yes --> F[Return Paper Info]    E -- No --> G[Return Error]Show more lines
+
+🔹 MCP Communication Model
+MermaidsequenceDiagram    participant Client    participant Server    participant Tool    Client->>Server: ListToolsRequest    Server-->>Client: Tools List        Client->>Server: CallTool(search_papers)    Server->>Tool: Execute    Tool-->>Server: Result    Server-->>Client: ResponseShow more lines
+
+📁 Project Structure
+Mermaidflowchart TD    A[mcp_project/] --> B[research_server.py]    A --> C[papers/]    C --> D[topic_1/]    C --> E[topic_2/]    D --> F[papers_info.json]    E --> G[papers_info.json]Show more lines
+
+⚙️ Setup Instructions
+✅ Prerequisites
+
+Python 3.10+
+Node.js (for MCP Inspector)
+uv (Python package manager)
 
 
-@mcp.tool()
-def search_papers(topic: str, max_results: int = 5) -> List[str]:   #Function Signature
+🔧 Installation
+Shell# Navigate to projectcd mcp_project# Initialize projectuv init# Create virtual environmentuv venv# Activate environment (Windows).venv\Scripts\activate# Install dependenciesuv add mcp arxiv``Show more lines
+
+▶️ Running the Server
+Shelluv run research_server.pyShow more lines
+
+🧪 Testing with MCP Inspector
+Shellnpx @modelcontextprotocol/inspector uv run research_server.pyShow more lines
+👉 This opens a UI where you can:
+
+View tools
+Call tools interactively
+Debug outputs
+
+
+💾 Data Storage Design
+
+Papers are stored under:
+papers/<topic>/papers_info.json
 
 
 
-if __name__ == "__main__":
-    mcp.run(transport='stdio')  #running the server
+✅ Benefits:
+
+Organized by topic
+Avoids duplicate API calls
+Enables reuse of data
+
+
+🧠 Design Decisions
+✅ Why FastMCP?
+
+Simplifies MCP implementation
+Auto-generates schemas from Python code
 ```
 
-## 🔄 End-to-End Flow
-
-### ✅ Step 1: Search Papers
-
-    Agent → search_papers("LLM agents")
-            ↓
-         arXiv search
-            ↓
-      Save results locally
-            ↓
-      Return paper IDs
-
-
-### ✅ Step 2: Retrieve Paper Info
-
-    Agent → extract_info(paper_id)
-            ↓
-      Search local storage
-            ↓
-         Return metadata
-
-
-## 🧩 Architecture
-
-    AI Agent
-       ↓
-    MCP Client
-       ↓
-    MCP Server (this project)
-       ↓
-    arXiv API + Local JSON Storage
 
 
 
