@@ -752,4 +752,35 @@ flowchart TD
     D --> F
 ```
 
+```mermaid
+
+
+sequenceDiagram
+    participant Client
+    participant Server
+    participant Tool
+
+    Client->>Server: ListToolsRequest
+    Server-->>Client: Tools List
+    
+    Client->>Server: CallTool(search_papers)
+    Server->>Tool: Execute
+    Tool-->>Server: Result
+    Server-->>Client: Response
+
+
+```
+
+```mermaid
+
+flowchart TD
+    A[mcp_project/] --> B[research_server.py]
+    A --> C[papers/]
+    C --> D[topic_1/]
+    C --> E[topic_2/]
+    D --> F[papers_info.json]
+    E --> G[papers_info.json]
+
+```
+
 
