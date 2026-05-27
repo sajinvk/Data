@@ -750,64 +750,6 @@ flowchart TD
     C --> E[arXiv API]
     C --> F[Local Storage JSON]
     D --> F
-
-🔹 Tool Execution Flow (search_papers)
-Mermaidflowchart LR    A[User Input: Topic] --> B[search_papers]    B --> C[Call arXiv API]    C --> D[Fetch Results]    D --> E[Process Data]    E --> F[Save JSON]    F --> G[Return Paper IDs]Show more lines
-
-🔹 Tool Execution Flow (extract_info)
-Mermaidflowchart LR    A[Paper ID] --> B[extract_info]    B --> C[Scan Directories]    C --> D[Load JSON]    D --> E{ID Found?}    E -- Yes --> F[Return Paper Info]    E -- No --> G[Return Error]Show more lines
-
-🔹 MCP Communication Model
-MermaidsequenceDiagram    participant Client    participant Server    participant Tool    Client->>Server: ListToolsRequest    Server-->>Client: Tools List        Client->>Server: CallTool(search_papers)    Server->>Tool: Execute    Tool-->>Server: Result    Server-->>Client: ResponseShow more lines
-
-📁 Project Structure
-Mermaidflowchart TD    A[mcp_project/] --> B[research_server.py]    A --> C[papers/]    C --> D[topic_1/]    C --> E[topic_2/]    D --> F[papers_info.json]    E --> G[papers_info.json]Show more lines
-
-⚙️ Setup Instructions
-✅ Prerequisites
-
-Python 3.10+
-Node.js (for MCP Inspector)
-uv (Python package manager)
-
-
-🔧 Installation
-Shell# Navigate to projectcd mcp_project# Initialize projectuv init# Create virtual environmentuv venv# Activate environment (Windows).venv\Scripts\activate# Install dependenciesuv add mcp arxiv``Show more lines
-
-▶️ Running the Server
-Shelluv run research_server.pyShow more lines
-
-🧪 Testing with MCP Inspector
-Shellnpx @modelcontextprotocol/inspector uv run research_server.pyShow more lines
-👉 This opens a UI where you can:
-
-View tools
-Call tools interactively
-Debug outputs
-
-
-💾 Data Storage Design
-
-Papers are stored under:
-papers/<topic>/papers_info.json
-
-
-
-✅ Benefits:
-
-Organized by topic
-Avoids duplicate API calls
-Enables reuse of data
-
-
-🧠 Design Decisions
-✅ Why FastMCP?
-
-Simplifies MCP implementation
-Auto-generates schemas from Python code
 ```
-
-
-
 
 
