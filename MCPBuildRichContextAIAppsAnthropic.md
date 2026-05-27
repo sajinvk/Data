@@ -662,3 +662,102 @@ OBSERVE → Tool result is received
 REPEAT → Continue until final answer
 
 
+# Creating a MCP Server 
+
+<img width="703" height="416" alt="image" src="https://github.com/user-attachments/assets/c7f2e153-a301-4975-8915-4cd3d1aecd7c" />
+
+
+Layer 1: Agent Framework
+👉 LangChain, Azure Agent Framework, Databricks Mosaic
+
+Layer 2: Tool Protocol
+👉 MCP (this is what you’re learning)
+
+Layer 3: MCP Server Framework
+👉 **FastMCP**, FastAPI-MCP
+
+Layer 4: Hosting / Platform
+👉 Databricks, Azure, MCP Cloud
+
+
+# 📚 Research MCP Server
+
+## 🚀 Overview
+
+This project implements a simple **Model Context Protocol (MCP) server** using **FastMCP**.  
+It enables AI agents to search, store, and retrieve research paper metadata from **arXiv**.
+
+The server exposes two tools:
+- 🔍 `search_papers` → Search and store research papers
+- 📄 `extract_info` → Retrieve stored paper metadata
+
+---
+
+## 🏗️ Project Structure
+
+``
+---
+
+## 🧠 Key Concepts
+
+- **MCP Server** → Exposes tools to AI agents
+- **FastMCP** → Framework to build MCP servers
+- **Tools** → Functions callable by AI agents
+- **arXiv API** → External source for research papers
+
+---
+
+## ⚙️ Code Overview
+
+### ✅ Server Initialization
+
+```python
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP("research")
+
+
+@mcp.tool()
+def search_papers(topic: str, max_results: int = 5) -> List[str]:   #Function Signature
+
+
+
+if __name__ == "__main__":
+    mcp.run(transport='stdio')  #running the server
+```
+
+## 🔄 End-to-End Flow
+
+### ✅ Step 1: Search Papers
+
+    Agent → search_papers("LLM agents")
+            ↓
+         arXiv search
+            ↓
+      Save results locally
+            ↓
+      Return paper IDs
+
+
+### ✅ Step 2: Retrieve Paper Info
+
+    Agent → extract_info(paper_id)
+            ↓
+      Search local storage
+            ↓
+         Return metadata
+
+
+## 🧩 Architecture
+
+    AI Agent
+       ↓
+    MCP Client
+       ↓
+    MCP Server (this project)
+       ↓
+    arXiv API + Local JSON Storage
+
+
+
+
