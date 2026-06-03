@@ -6,3 +6,4 @@ In your code, Claude is not the MCP client. Your Python program (MCP_ChatBot) is
 * The user typing a question in the console. [modelconte...tocol.info]
 * Claude, which reads the question and decides whether a tool is needed via the Messages API. Anthropic describes the Messages API as the direct model-access interface where you manage the conversation and tool loop yourself. [platform.claude.com], [platform.claude.com]
 * An MCP server, which exposes tools that your client can discover with list_tools() and invoke with call_tool().
+
