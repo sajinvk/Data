@@ -930,47 +930,7 @@ flowchart TD
 
 ---
 
-## ⚠️ Common Issues & Fixes
 
-### ❌ Running shell commands in Jupyter Notebook cells
-Jupyter cells run Python, not shell commands.
-
-✅ Use:
-- a Terminal (recommended), OR
-- prefix shell commands with `!` (not persistent for env activation)
-
----
-
-### ❌ Using Linux `source` on Windows
-On Windows, `source` doesn’t exist.
-
-✅ Use:
-```bash
-.venv\Scripts\activate
-```
-
----
-
-### ❌ `uv` not recognized
-If your terminal can’t find `uv`, try running it via Python:
-
-```bash
-python -m uv --version
-```
-
-If that works, then your PATH needs updating for `uv` scripts.
-
----
-
-## 🚀 Future Enhancements
-
-- Add HTTP transport (remote MCP server)
-- Add LLM agent integration
-- Add embeddings + vector search for papers
-- Replace JSON storage with SQLite/Postgres
-- Add more tools (summarize paper, extract citations, etc.)
-
----
 
 ## 📚 Resources
 
