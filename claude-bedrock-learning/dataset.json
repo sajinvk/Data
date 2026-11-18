@@ -1,0 +1,17 @@
+[
+  {
+    "prompt_inputs": {
+      "height": "180 cm",
+      "weight": "72 kg",
+      "goal": "Marathon training with 3000+ calorie intake and optimal macronutrient timing around a 2-hour long run",
+      "restrictions": "None"
+    },
+    "solution_criteria": [
+      "Meal plan totals 3000+ calories with macronutrient ratios supporting endurance (approximately 55-60% carbs, 15-20% protein, 20-25% fat)",
+      "Includes pre-run fuel (1-2 hours before), during-run hydration/fuel strategy for 2+ hour session, and post-run recovery meal within 30-60 minutes",
+      "Plan is compact and concise (fits in under 400 tokens) with clear meal timing and portion sizes"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a high-endurance athlete (marathon runner) requiring 3000+ calories with specific macronutrient ratios and timing around long training sessions"
+  }
+]

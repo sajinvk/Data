@@ -1,0 +1,22 @@
+[
+  {
+    "output": "# Marathon Training Meal Plan - 3000 Calorie Day\n**For: 180cm, 72kg Male Athlete | Long Run Day (2-hour session)**\n\n---\n\n## DAILY MACRONUTRIENT TARGETS\n- **Calories:** 3000 kcal\n- **Protein:** 135g (18%)\n- **Carbs:** 420g (56%)\n- **Fat:** 85g (26%)\n\n---\n\n## MEAL PLAN\n\n### **BREAKFAST (6:00 AM)** - 650 kcal\n*Before morning run prep/light workout*\n\n| Item | Portion | Calories | Protein(g) | Carbs(g) | Fat(g) |\n|------|---------|----------|-----------|----------|--------|\n| Whole wheat bread | 80g | 210 | 7 | 42 | 2 |\n| Peanut butter | 20g | 190 | 8 | 7 | 16 |\n| Banana | 120g | 105 | 1 | 27 | 0.3 |\n| Honey | 15g | 45 | 0 | 12 | 0 |\n| Black tea with milk (200ml) | 200ml | 100 | 7 | 5 | 4 |\n\n**Subtotal: 650 kcal | P: 23g | C: 93g | F: 22g**\n\n---\n\n### **PRE-RUN SNACK (8:30 AM)** - 200 kcal\n*30-40 mins before 2-hour run*\n\n| Item | Portion | Calories | Protein(g) | Carbs(g) | Fat(g) |\n|------|---------|----------|-----------|----------|--------|\n| Glucose/Energy drink* | 250ml | 100 | 0 | 25 | 0 |\n| Banana | 100g | 89 | 1 | 23 | 0.3 |\n| Salt | 1g | 0 | 0 | 0 | 0 |\n\n**Subtotal: 189 kcal | P: 1g | C: 48g | F: 0.3g**\n\n*DIY: Mix 25g jaggery + 250ml water + pinch of salt*\n\n---\n\n### **POST-RUN MEAL (11:30 AM)** - 800 kcal\n*Within 30 mins of finishing run - CRITICAL*\n\n**Egg Khichdi + Yogurt**\n\n| Item | Portion | Calories | Protein(g) | Carbs(g) | Fat(g) |\n|------|---------|----------|-----------|----------|--------|\n| Rice (uncooked) | 60g | 215 | 4 | 48 | 0.2 |\n| Moong dal (uncooked) | 30g | 105 | 7 | 19 | 0.5 |\n| Eggs | 2 large | 140 | 12 | 1 | 10 |\n| Ghee | 10g | 90 | 0 | 0 | 10 |\n| Turmeric, cumin | 2g | 8 | 0.2 | 1.5 | 0.3 |\n| Plain yogurt (full-fat) | 150g | 120 | 10 | 7 | 6 |\n| Jaggery (dessert) | 20g | 60 | 0 | 15 | 0 |\n| Salt & spices | 1g | 0 | 0 | 0 | 0 |\n\n**Subtotal: 738 kcal | P: 33g | C: 91g | F: 27g**\n\n---\n\n### **LUNCH (2:00 PM)** - 750 kcal\n*Main meal*\n\n**Chicken Biryani with Raita**\n\n| Item | Portion | Calories | Protein(g) | Carbs(g",
+    "test_case": {
+      "prompt_inputs": {
+        "height": "180 cm",
+        "weight": "72 kg",
+        "goal": "Marathon training with 3000+ calorie intake and optimal macronutrient timing around a 2-hour long run",
+        "restrictions": "None"
+      },
+      "solution_criteria": [
+        "Meal plan totals 3000+ calories with macronutrient ratios supporting endurance (approximately 55-60% carbs, 15-20% protein, 20-25% fat)",
+        "Includes pre-run fuel (1-2 hours before), during-run hydration/fuel strategy for 2+ hour session, and post-run recovery meal within 30-60 minutes",
+        "Plan is compact and concise (fits in under 400 tokens) with clear meal timing and portion sizes"
+      ],
+      "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+      "scenario": "Testing with a high-endurance athlete (marathon runner) requiring 3000+ calories with specific macronutrient ratios and timing around long training sessions"
+    },
+    "score": 5,
+    "reasoning": "The solution demonstrates strong understanding of marathon nutrition principles and includes all mandatory requirements in the completed sections. Macronutrient ratios are appropriate (56% carbs, 18% protein, 26% fat), timing is strategic, and portion sizes are specified. However, the solution has critical deficiencies: (1) it's incomplete/truncated, failing to deliver a full day plan, (2) it lacks explicit during-run fueling strategy despite the task specifying a 2-hour long run, and (3) it violates the conciseness requirement through excessive detail and formatting. The incomplete state is particularly problematic as it prevents verification of total daily macros and leaves the plan unusable."
+  }
+]
