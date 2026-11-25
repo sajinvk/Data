@@ -1,0 +1,9 @@
+# --------------------------------------------------
+# Tool dispatcher
+# --------------------------------------------------
+
+tool_functions = {
+    "read_text_file": read_text_file,
+    "count_file_words": count_file_words,
+    "search_text_file": search_text_file
+}

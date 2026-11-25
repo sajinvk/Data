@@ -1,0 +1,33 @@
+{
+  "GOLD-HOSPITAL": {
+    "policy_id": "GOLD-HOSPITAL",
+    "policy_name": "Gold Hospital Cover",
+    "outpatient_imaging": {
+      "covered": true,
+      "in_network_benefit_percent": 80,
+      "out_of_network_benefit_percent": 50,
+      "prior_authorisation_required": true,
+      "annual_limit": 2000.00
+    },
+    "rules": [
+      "Outpatient imaging is covered when clinically necessary.",
+      "Prior authorisation is required for MRI services.",
+      "Out-of-network providers are reimbursed at 50 percent of the eligible cost.",
+      "The member is responsible for the remaining eligible cost and any amount above policy limits."
+    ]
+  },
+  "SILVER-HOSPITAL": {
+    "policy_id": "SILVER-HOSPITAL",
+    "policy_name": "Silver Hospital Cover",
+    "emergency_treatment": {
+      "covered": true,
+      "in_network_benefit_percent": 80,
+      "out_of_network_benefit_percent": 60,
+      "excess": 150.00
+    },
+    "rules": [
+      "Emergency treatment is covered after the applicable excess.",
+      "The standard member excess is 150 dollars."
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+Yes. run_tool() can call any function registered in the tool_functions dictionary.
+
+Python
+tool_functions = {
+"read_text_file": read_text_file,
+"count_file_words": count_file_words,
+"search_text_file": search_text_file,
+}
+
+The flow is:
+
+tool_name comes from Claude’s tool_use block.
+.get(tool_name) retrieves the matching Python function.
+function(**tool_input) executes that function using Claude’s input as named arguments.
+
+Example:
+
+Python
+tool_name = "search_text_file"
+ 
+tool_input = {
+"filename": "sample.txt",
+"search_term": "claim"
+}
+
+This becomes:
+
+Python
+search_text_file(
+filename="sample.txt",
+search_term="claim"
+)
+Important conditions
+The function must be registered in tool_functions.
+The dictionary key must match the tool schema’s name.
+The keys in tool_input must match the function’s parameter names.
+The function shown is synchronous. An async function requires await function(**tool_input).
+
+Memory: Tool schema tells Claude what exists; dispatcher maps the name; Python function performs the work.

@@ -1,0 +1,22 @@
+agentic loop 
+Below is the earlier local-file example rewritten as a complete agentic loop. Claude can repeatedly request tools until it returns end_turn.
+Claude call
+   ↓
+stop_reason = tool_use
+   ↓
+Python executes requested tool
+   ↓
+tool_result returned
+   ↓
+Claude chooses next step
+   ↓
+Repeat until stop_reason = end_turn
+
+Code	Meaning
+for turn in range(max_turns)	Prevents an unlimited agent loop
+stop_reason == "tool_use"	Claude requires an external operation
+run_tool(...)	Application performs the requested operation
+"type": "tool_result"	Fixed protocol value for returning results
+"tool_use_id": block.id	Matches the result to Claude’s call
+stop_reason == "end_turn"	Claude has completed the task
+disable_parallel_tool_use=True	Limits each turn to one tool call

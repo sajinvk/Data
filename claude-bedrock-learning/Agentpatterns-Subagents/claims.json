@@ -1,0 +1,29 @@
+{
+  "CLM-1048": {
+    "claim_id": "CLM-1048",
+    "member_id": "MEM-101",
+    "policy_id": "GOLD-HOSPITAL",
+    "service": "Outpatient knee MRI",
+    "provider": "Central Imaging Clinic",
+    "provider_network_status": "out_of_network",
+    "service_date": "2026-11-10",
+    "claimed_amount": 1200.00,
+    "status": "REJECTED",
+    "rejection_code": "NETWORK-001",
+    "rejection_reason": "Provider was outside the approved network",
+    "prior_authorisation": true
+  },
+  "CLM-1049": {
+    "claim_id": "CLM-1049",
+    "member_id": "MEM-102",
+    "policy_id": "SILVER-HOSPITAL",
+    "service": "Emergency department treatment",
+    "provider": "Northern General Hospital",
+    "provider_network_status": "in_network",
+    "service_date": "2026-11-12",
+    "claimed_amount": 850.00,
+    "status": "APPROVED",
+    "approved_amount": 700.00,
+    "member_contribution": 150.00
+  }
+}
